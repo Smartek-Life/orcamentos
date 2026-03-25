@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="main.css">
+<script type="text/javascript">
+function zoomToggle(num)
+{
+  var img = document.getElementById("ss-" + num);
+  
+  if (img.className == "screenshot") {
+    img.className = "screenshot-thumb";
+  }
+  else {
+    img.className = "screenshot";
+  }
+  
+  return false;
+}
+
+function AddComment(index)
+{
+    // Hide user's previous comment, "Add Comment" and "Update Comment" buttons.
+    document.getElementById("AddCommentButtonId" + index).style.display = 'none';
+    document.getElementById("UpdateCommentButtonId" + index).style.display = 'none';
+    document.getElementById("CommentTextId" + index).style.display = 'none';
+
+    // Empty text input box.
+    document.getElementById("CommentInputText" + index).value = '';
+
+    // Display text input box, OK and Cancel buttons.
+    document.getElementById("CommentInputEntityItemId" + index).style.display = 'inline';
+}
+
+function AddCommentA11yFixes(index)
+{
+    // Please note this function is only for MomentFeature_StepsRecorderA11yFixes_v01.
+    // Hide user's previous comment, "Add Comment" and "Update Comment" buttons.
+    document.getElementById("AddCommentButtonId" + index).style.display = 'none';
+    document.getElementById("UpdateCommentButtonId" + index).style.display = 'none';
+    document.getElementById("CommentTextId" + index).style.display = 'none';
+
+    // Empty text input box.
+    document.getElementById("CommentInputText" + index).value = '';
+
+    // Display text input box, OK and Cancel buttons.
+    document.getElementById("CommentInputEntityItemId" + index).style.display = 'inline';
+
+    // Set focus on text input box.
+    document.getElementById("CommentInputText" + index).focus();
+}
+
+function AddCommentOK(index)
+{
+    // Display user's comment.
+    document.getElementById("CommentTextId" + index).style.display = 'inline';
+    document.getElementById("CommentTextId" + index).innerText = document.getElementById("CommentInputText" + index).value;
+
+    // Display "Add Comment" or "Update Comment" button.
+    if (document.getElementById("CommentTextId" + index).innerText)
+    {
+        document.getElementById("UpdateCommentButtonId" + index).style.display = 'inline';
+    }
+    else
+    {
+        document.getElementById("AddCommentButtonId" + index).style.display = 'inline';
+    }
+
+    // Hide text input box, OK and Cancel buttons.
+    document.getElementById("CommentInputEntityItemId" + index).style.display = 'none';
+}
+
+function AddCommentCancel(index)
+{
+    // Hide text input box, OK and Cancel buttons.
+    document.getElementById("CommentInputEntityItemId" + index).style.display = 'none';
+
+    // Display user's previous comment if there is one.
+    document.getElementById("CommentTextId" + index).style.display = 'inline';
+
+    // Display "Add Comment" or "Update Comment" button.
+    if (document.getElementById("CommentTextId" + index).innerText)
+    {
+        document.getElementById("UpdateCommentButtonId" + index).style.display = 'inline';
+    }
+    else
+    {
+        document.getElementById("AddCommentButtonId" + index).style.display = 'inline';
+    }
+}
+
+</script>
+<title id="m1">Passos Gravados</title>
+</head>
+<body>
+<!-- Este é o dado XML gravado que foi utilizado na geração desta página. -->
+<xml id="recordeddata">
+<script id="myXML" type="text/xml">
+<?xml version="1.0" encoding="UTF-8"?>
+<Report>
+  <System MajorVersion="10" MinorVersion="0" ServicePackMajor="0" ServicePackMinor="0" BuildNumber="26200" Sku="48" Platform="2" />
+  <UserActionData>
+    <RecordSession SessionCount="1" StartTime="08:20:49" StopTime="08:21:42" ActionCount="13" MissedActionCount="0">
+      <EachAction ActionNumber="1" Time="08:20:51" Pid="26484" ProgramId="0000a0ea77d7d96ed6ae4f7aa36cee42af470000ffff" FileId="000083d3842d579e5b6e2e5b055cca4fb90933489c28" FileVersion="148.0.2" FileDescription="Firefox" FileCompany="Mozilla Corporation" FileName="FIREFOX.EXE" CommandLine="FIREFOX.EXE">
+        <Description>Início da operação do usuário de arrastar com o ponteiro do mouse em "Get Started - UniFi Design Center — Perfil original — Mozilla Firefox (janela)" em "Get Started - UniFi Design Center — Perfil original — Mozilla Firefox"</Description>
+        <Action>Início da Operação de Arrastar com o Ponteiro do Mouse</Action>
+        <CursorCoordsXY>837,492</CursorCoordsXY>
+        <ScreenCoordsXYWH>0,0,1920,1080</ScreenCoordsXYWH>
+        <UIAStack>
+          <Level BoundingRectangle="0,0,1920,1032" ClassName="MozillaWindowClass" ControlType="50032" FrameworkId="Gecko" Name="Get Started - UniFi Design Center — Perfil original — Mozilla Firefox" LocalizedControlType="janela" />
+        </UIAStack>
+        <ScreenshotFileName>screenshot0001.JPEG</ScreenshotFileName>
+      </EachAction>
+      <EachAction ActionNumber="2" Time="08:20:54" Pid="26484" ProgramId="0000a0ea77d7d96ed6ae4f7aa36cee42af470000ffff" FileId="000083d3842d579e5b6e2e5b055cca4fb90933489c28" FileVersion="148.0.2" FileDescription="Firefox" FileCompany="Mozilla Corporation" FileName="FIREFOX.EXE" CommandLine="FIREFOX.EXE">
+        <Description>Fim da operação do usuário de arrastar com o ponteiro do mouse em "Get Started - UniFi Design Center (documento)" em "Get Started - UniFi Design Center — Perfil original — Mozilla Firefox"</Description>
+        <Action>Fim da Operação de Arrastar com o Ponteiro do Mouse</Action>
+        <CursorCoordsXY>797,490</CursorCoordsXY>
+        <ScreenCoordsXYWH>0,0,1920,1080</ScreenCoordsXYWH>
+        <UIAStack>
+          <Level BoundingRectangle="50,164,1870,868" ControlType="50006" FrameworkId="Gecko" LocalizedControlType="Imagem" />
+          <Level BoundingRectangle="50,164,1870,868" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="50,164,1870,868" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="principal" />
+          <Level BoundingRectangle="0,85,1920,947" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="0,85,1920,947" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="0,85,1920,947" ControlType="50030" FrameworkId="Gecko" Name="Get Started - UniFi Design Center" LocalizedControlType="documento" />
+          <Level BoundingRectangle="0,85,1920,947" ControlType="50033" FrameworkId="Gecko" LocalizedControlType="painel" />
+          <Level AutomationId="panel-1-1" BoundingRectangle="0,85,1920,947" ClassName="browserSidebarContainer deck-selected" ControlType="50033" FrameworkId="Gecko" LocalizedControlType="painel de guias" />
+          <Level AutomationId="tabbrowser-tabpanels" BoundingRectangle="0,85,1920,947" ControlType="50033" FrameworkId="Gecko" LocalizedControlType="painel" />
+          <Level BoundingRectangle="0,0,1920,1032" ClassName="MozillaWindowClass" ControlType="50032" FrameworkId="Gecko" Name="Get Started - UniFi Design Center — Perfil original — Mozilla Firefox" LocalizedControlType="janela" />
+        </UIAStack>
+        <ScreenshotFileName>screenshot0002.JPEG</ScreenshotFileName>
+      </EachAction>
+      <EachAction ActionNumber="3" Time="08:20:55" Pid="26484" ProgramId="0000a0ea77d7d96ed6ae4f7aa36cee42af470000ffff" FileId="000083d3842d579e5b6e2e5b055cca4fb90933489c28" FileVersion="148.0.2" FileDescription="Firefox" FileCompany="Mozilla Corporation" FileName="FIREFOX.EXE" CommandLine="FIREFOX.EXE">
+        <Description>Início da operação do usuário de arrastar com o ponteiro do mouse em "Get Started - UniFi Design Center (documento)" em "Get Started - UniFi Design Center — Perfil original — Mozilla Firefox"</Description>
+        <Action>Início da Operação de Arrastar com o Ponteiro do Mouse</Action>
+        <CursorCoordsXY>1077,544</CursorCoordsXY>
+        <ScreenCoordsXYWH>0,0,1920,1080</ScreenCoordsXYWH>
+        <UIAStack>
+          <Level BoundingRectangle="50,164,1870,868" ControlType="50006" FrameworkId="Gecko" LocalizedControlType="Imagem" />
+          <Level BoundingRectangle="50,164,1870,868" ClassName="editor-container" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="50,164,1870,868" ClassName="designer css-1wq2q75" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="principal" />
+          <Level AutomationId="root" BoundingRectangle="0,85,1920,947" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="0,85,1920,947" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="0,85,1920,947" ControlType="50030" FrameworkId="Gecko" Name="Get Started - UniFi Design Center" LocalizedControlType="documento" />
+          <Level BoundingRectangle="0,85,1920,947" ControlType="50033" FrameworkId="Gecko" LocalizedControlType="painel" />
+          <Level AutomationId="panel-1-1" BoundingRectangle="0,85,1920,947" ClassName="browserSidebarContainer deck-selected" ControlType="50033" FrameworkId="Gecko" LocalizedControlType="painel de guias" />
+          <Level AutomationId="tabbrowser-tabpanels" BoundingRectangle="0,85,1920,947" ControlType="50033" FrameworkId="Gecko" LocalizedControlType="painel" />
+          <Level BoundingRectangle="0,0,1920,1032" ClassName="MozillaWindowClass" ControlType="50032" FrameworkId="Gecko" Name="Get Started - UniFi Design Center — Perfil original — Mozilla Firefox" LocalizedControlType="janela" />
+        </UIAStack>
+        <ScreenshotFileName>screenshot0003.JPEG</ScreenshotFileName>
+      </EachAction>
+      <EachAction ActionNumber="4" Time="08:21:05" Pid="26484" ProgramId="0000a0ea77d7d96ed6ae4f7aa36cee42af470000ffff" FileId="000083d3842d579e5b6e2e5b055cca4fb90933489c28" FileVersion="148.0.2" FileDescription="Firefox" FileCompany="Mozilla Corporation" FileName="FIREFOX.EXE" CommandLine="FIREFOX.EXE">
+        <Description>Fim da operação do usuário de arrastar com o ponteiro do mouse em "Get Started - UniFi Design Center (documento)" em "Get Started - UniFi Design Center — Perfil original — Mozilla Firefox"</Description>
+        <Action>Fim da Operação de Arrastar com o Ponteiro do Mouse</Action>
+        <CursorCoordsXY>1068,598</CursorCoordsXY>
+        <ScreenCoordsXYWH>0,0,1920,1080</ScreenCoordsXYWH>
+        <UIAStack>
+          <Level BoundingRectangle="50,164,1870,868" ControlType="50006" FrameworkId="Gecko" LocalizedControlType="Imagem" />
+          <Level BoundingRectangle="50,164,1870,868" ClassName="editor-container" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="50,164,1870,868" ClassName="designer css-1wq2q75" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="principal" />
+          <Level AutomationId="root" BoundingRectangle="0,85,1920,947" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="0,85,1920,947" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="0,85,1920,947" ControlType="50030" FrameworkId="Gecko" Name="Get Started - UniFi Design Center" LocalizedControlType="documento" />
+          <Level BoundingRectangle="0,85,1920,947" ControlType="50033" FrameworkId="Gecko" LocalizedControlType="painel" />
+          <Level AutomationId="panel-1-1" BoundingRectangle="0,85,1920,947" ClassName="browserSidebarContainer deck-selected" ControlType="50033" FrameworkId="Gecko" LocalizedControlType="painel de guias" />
+          <Level AutomationId="tabbrowser-tabpanels" BoundingRectangle="0,85,1920,947" ControlType="50033" FrameworkId="Gecko" LocalizedControlType="painel" />
+          <Level BoundingRectangle="0,0,1920,1032" ClassName="MozillaWindowClass" ControlType="50032" FrameworkId="Gecko" Name="Get Started - UniFi Design Center — Perfil original — Mozilla Firefox" LocalizedControlType="janela" />
+        </UIAStack>
+        <ScreenshotFileName>screenshot0004.JPEG</ScreenshotFileName>
+      </EachAction>
+      <EachAction ActionNumber="5" Time="08:21:07" Pid="26484" ProgramId="0000a0ea77d7d96ed6ae4f7aa36cee42af470000ffff" FileId="000083d3842d579e5b6e2e5b055cca4fb90933489c28" FileVersion="148.0.2" FileDescription="Firefox" FileCompany="Mozilla Corporation" FileName="FIREFOX.EXE" CommandLine="FIREFOX.EXE">
+        <Description>Clique do usuário com o botão esquerdo do mouse em "WiFi (botão)" em "Get Started - UniFi Design Center — Perfil original — Mozilla Firefox"</Description>
+        <Action>Clicar com o Botão Esquerdo do Mouse</Action>
+        <CursorCoordsXY>924,203</CursorCoordsXY>
+        <ScreenCoordsXYWH>0,0,1920,1080</ScreenCoordsXYWH>
+        <UIAStack>
+          <Level BoundingRectangle="849,185,88,24" ClassName="css-109dycu" ControlType="50000" FrameworkId="Gecko" Name="WiFi" LocalizedControlType="botão" />
+          <Level BoundingRectangle="418,180,1134,46" ClassName="css-1dpbffe" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="418,154,1134,862" ClassName="css-z3jvqm" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="50,164,1870,868" ClassName="designer css-1wq2q75" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="principal" />
+          <Level AutomationId="root" BoundingRectangle="0,85,1920,947" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="0,85,1920,947" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="0,85,1920,947" ControlType="50030" FrameworkId="Gecko" Name="Get Started - UniFi Design Center" LocalizedControlType="documento" />
+          <Level BoundingRectangle="0,85,1920,947" ControlType="50033" FrameworkId="Gecko" LocalizedControlType="painel" />
+          <Level AutomationId="panel-1-1" BoundingRectangle="0,85,1920,947" ClassName="browserSidebarContainer deck-selected" ControlType="50033" FrameworkId="Gecko" LocalizedControlType="painel de guias" />
+          <Level AutomationId="tabbrowser-tabpanels" BoundingRectangle="0,85,1920,947" ControlType="50033" FrameworkId="Gecko" LocalizedControlType="painel" />
+          <Level BoundingRectangle="0,0,1920,1032" ClassName="MozillaWindowClass" ControlType="50032" FrameworkId="Gecko" Name="Get Started - UniFi Design Center — Perfil original — Mozilla Firefox" LocalizedControlType="janela" />
+        </UIAStack>
+        <ScreenshotFileName>screenshot0005.JPEG</ScreenshotFileName>
+      </EachAction>
+      <EachAction ActionNumber="6" Time="08:21:11" Pid="26484" ProgramId="0000a0ea77d7d96ed6ae4f7aa36cee42af470000ffff" FileId="000083d3842d579e5b6e2e5b055cca4fb90933489c28" FileVersion="148.0.2" FileDescription="Firefox" FileCompany="Mozilla Corporation" FileName="FIREFOX.EXE" CommandLine="FIREFOX.EXE">
+        <Description>Clique do usuário com o botão esquerdo do mouse em "Off (botão)" em "Get Started - UniFi Design Center — Perfil original — Mozilla Firefox"</Description>
+        <Action>Clicar com o Botão Esquerdo do Mouse</Action>
+        <CursorCoordsXY>1096,190</CursorCoordsXY>
+        <ScreenCoordsXYWH>0,0,1920,1080</ScreenCoordsXYWH>
+        <UIAStack>
+          <Level BoundingRectangle="1079,187,20,20" ClassName="text__gebaDyU2 text-light__gebaDyU2 size-medium__gebaDyU2 color-inherit__gebaDyU2 weight-regular__gebaDyU2 withLinkStyles__gebaDyU2" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="1033,185,88,24" ClassName="css-109dycu" ControlType="50000" FrameworkId="Gecko" Name="Off" LocalizedControlType="botão" />
+          <Level BoundingRectangle="418,180,1134,46" ClassName="css-1dpbffe" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="418,154,1134,862" ClassName="css-z3jvqm" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="50,164,1870,868" ClassName="designer css-1wq2q75" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="principal" />
+          <Level AutomationId="root" BoundingRectangle="0,85,1920,947" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="0,85,1920,947" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="0,85,1920,947" ControlType="50030" FrameworkId="Gecko" Name="Get Started - UniFi Design Center" LocalizedControlType="documento" />
+          <Level BoundingRectangle="0,85,1920,947" ControlType="50033" FrameworkId="Gecko" LocalizedControlType="painel" />
+          <Level AutomationId="panel-1-1" BoundingRectangle="0,85,1920,947" ClassName="browserSidebarContainer deck-selected" ControlType="50033" FrameworkId="Gecko" LocalizedControlType="painel de guias" />
+          <Level AutomationId="tabbrowser-tabpanels" BoundingRectangle="0,85,1920,947" ControlType="50033" FrameworkId="Gecko" LocalizedControlType="painel" />
+          <Level BoundingRectangle="0,0,1920,1032" ClassName="MozillaWindowClass" ControlType="50032" FrameworkId="Gecko" Name="Get Started - UniFi Design Center — Perfil original — Mozilla Firefox" LocalizedControlType="janela" />
+        </UIAStack>
+        <ScreenshotFileName>screenshot0006.JPEG</ScreenshotFileName>
+      </EachAction>
+      <EachAction ActionNumber="7" Time="08:21:12" Pid="26484" ProgramId="0000a0ea77d7d96ed6ae4f7aa36cee42af470000ffff" FileId="000083d3842d579e5b6e2e5b055cca4fb90933489c28" FileVersion="148.0.2" FileDescription="Firefox" FileCompany="Mozilla Corporation" FileName="FIREFOX.EXE" CommandLine="FIREFOX.EXE">
+        <Description>Clique do usuário com o botão esquerdo do mouse em "Get Started - UniFi Design Center (documento)" em "Get Started - UniFi Design Center — Perfil original — Mozilla Firefox"</Description>
+        <Action>Clicar com o Botão Esquerdo do Mouse</Action>
+        <CursorCoordsXY>880,998</CursorCoordsXY>
+        <ScreenCoordsXYWH>0,0,1920,1080</ScreenCoordsXYWH>
+        <UIAStack>
+          <Level BoundingRectangle="863,985,20,20" ClassName="Icon-module_icon__2a0I8 Icon-module_icon-light__27kpC Icon-module_icon-outline__3nv5v" ControlType="50006" FrameworkId="Gecko" LocalizedControlType="Imagem" />
+          <Level BoundingRectangle="861,983,24,24" ClassName="hoverable__9xW8x41Z cursor-pointer__9xW8x41Z css-109dycu" ControlType="50000" FrameworkId="Gecko" LocalizedControlType="botão" />
+          <Level BoundingRectangle="861,983,24,24" ClassName="css-1fws3x0 tooltip-container__vRGVdKCu container__9xW8x41Z hoverable__9xW8x41Z cursor-default__9xW8x41Z" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="0,0,0,0" ClassName="css-3jt5te" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="783,974,403,42" ClassName="css-dgn0aw" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="418,154,1134,862" ClassName="css-z3jvqm" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="50,164,1870,868" ClassName="designer css-1wq2q75" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="principal" />
+          <Level AutomationId="root" BoundingRectangle="0,85,1920,947" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="0,85,1920,947" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="0,85,1920,947" ControlType="50030" FrameworkId="Gecko" Name="Get Started - UniFi Design Center" LocalizedControlType="documento" />
+          <Level BoundingRectangle="0,85,1920,947" ControlType="50033" FrameworkId="Gecko" LocalizedControlType="painel" />
+          <Level AutomationId="panel-1-1" BoundingRectangle="0,85,1920,947" ClassName="browserSidebarContainer deck-selected" ControlType="50033" FrameworkId="Gecko" LocalizedControlType="painel de guias" />
+          <Level AutomationId="tabbrowser-tabpanels" BoundingRectangle="0,85,1920,947" ControlType="50033" FrameworkId="Gecko" LocalizedControlType="painel" />
+          <Level BoundingRectangle="0,0,1920,1032" ClassName="MozillaWindowClass" ControlType="50032" FrameworkId="Gecko" Name="Get Started - UniFi Design Center — Perfil original — Mozilla Firefox" LocalizedControlType="janela" />
+        </UIAStack>
+        <ScreenshotFileName>screenshot0007.JPEG</ScreenshotFileName>
+      </EachAction>
+      <EachAction ActionNumber="8" Time="08:21:24" Pid="26484" ProgramId="0000a0ea77d7d96ed6ae4f7aa36cee42af470000ffff" FileId="000083d3842d579e5b6e2e5b055cca4fb90933489c28" FileVersion="148.0.2" FileDescription="Firefox" FileCompany="Mozilla Corporation" FileName="FIREFOX.EXE" CommandLine="FIREFOX.EXE">
+        <Description>Clique do usuário com o botão esquerdo do mouse em "Brick 5 dB (item de lista)" em "Get Started - UniFi Design Center — Perfil original — Mozilla Firefox"</Description>
+        <Action>Clicar com o Botão Esquerdo do Mouse</Action>
+        <CursorCoordsXY>1761,378</CursorCoordsXY>
+        <ScreenCoordsXYWH>0,0,1920,1080</ScreenCoordsXYWH>
+        <UIAStack>
+          <Level AutomationId="react-aria6976465456-:rug:-option-brick" BoundingRectangle="1688,364,210,28" ClassName="css-1le895d item__dnUJZyn9 item-light__dnUJZyn9" ControlType="50007" FrameworkId="Gecko" Name="Brick 5 dB" LocalizedControlType="item de lista" />
+          <Level AutomationId="react-aria6976465456-:rug:" BoundingRectangle="1688,224,210,420" ClassName="optionList__dnUJZyn9 optionList-light__dnUJZyn9" ControlType="50008" FrameworkId="Gecko" LocalizedControlType="Lista" />
+          <Level BoundingRectangle="1688,224,210,420" ClassName="root__dnUJZyn9 root-light__dnUJZyn9" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="1688,224,210,420" ClassName="css-lhnpgk" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="1682,180,222,470" ClassName="css-1uykddx" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="66,180,1838,836" ClassName="css-as3tpg" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="50,164,1870,868" ClassName="designer css-1wq2q75" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="principal" />
+          <Level AutomationId="root" BoundingRectangle="0,85,1920,947" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="0,85,1920,947" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="0,85,1920,947" ControlType="50030" FrameworkId="Gecko" Name="Get Started - UniFi Design Center" LocalizedControlType="documento" />
+          <Level BoundingRectangle="0,85,1920,947" ControlType="50033" FrameworkId="Gecko" LocalizedControlType="painel" />
+          <Level AutomationId="panel-1-1" BoundingRectangle="0,85,1920,947" ClassName="browserSidebarContainer deck-selected" ControlType="50033" FrameworkId="Gecko" LocalizedControlType="painel de guias" />
+          <Level AutomationId="tabbrowser-tabpanels" BoundingRectangle="0,85,1920,947" ControlType="50033" FrameworkId="Gecko" LocalizedControlType="painel" />
+          <Level BoundingRectangle="0,0,1920,1032" ClassName="MozillaWindowClass" ControlType="50032" FrameworkId="Gecko" Name="Get Started - UniFi Design Center — Perfil original — Mozilla Firefox" LocalizedControlType="janela" />
+        </UIAStack>
+        <ScreenshotFileName>screenshot0008.JPEG</ScreenshotFileName>
+      </EachAction>
+      <EachAction ActionNumber="9" Time="08:21:28" Pid="26484" ProgramId="0000a0ea77d7d96ed6ae4f7aa36cee42af470000ffff" FileId="000083d3842d579e5b6e2e5b055cca4fb90933489c28" FileVersion="148.0.2" FileDescription="Firefox" FileCompany="Mozilla Corporation" FileName="FIREFOX.EXE" CommandLine="FIREFOX.EXE">
+        <Description>Clique do usuário com o botão esquerdo do mouse em "Get Started - UniFi Design Center (documento)" em "Get Started - UniFi Design Center — Perfil original — Mozilla Firefox"</Description>
+        <Action>Clicar com o Botão Esquerdo do Mouse</Action>
+        <CursorCoordsXY>834,651</CursorCoordsXY>
+        <ScreenCoordsXYWH>0,0,1920,1080</ScreenCoordsXYWH>
+        <UIAStack>
+          <Level BoundingRectangle="50,164,1870,868" ControlType="50006" FrameworkId="Gecko" LocalizedControlType="Imagem" />
+          <Level BoundingRectangle="50,164,1870,868" ClassName="editor-container" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="50,164,1870,868" ClassName="designer css-1wq2q75" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="principal" />
+          <Level AutomationId="root" BoundingRectangle="0,85,1920,947" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="0,85,1920,947" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="0,85,1920,947" ControlType="50030" FrameworkId="Gecko" Name="Get Started - UniFi Design Center" LocalizedControlType="documento" />
+          <Level BoundingRectangle="0,85,1920,947" ControlType="50033" FrameworkId="Gecko" LocalizedControlType="painel" />
+          <Level AutomationId="panel-1-1" BoundingRectangle="0,85,1920,947" ClassName="browserSidebarContainer deck-selected" ControlType="50033" FrameworkId="Gecko" LocalizedControlType="painel de guias" />
+          <Level AutomationId="tabbrowser-tabpanels" BoundingRectangle="0,85,1920,947" ControlType="50033" FrameworkId="Gecko" LocalizedControlType="painel" />
+          <Level BoundingRectangle="0,0,1920,1032" ClassName="MozillaWindowClass" ControlType="50032" FrameworkId="Gecko" Name="Get Started - UniFi Design Center — Perfil original — Mozilla Firefox" LocalizedControlType="janela" />
+        </UIAStack>
+        <ScreenshotFileName>screenshot0009.JPEG</ScreenshotFileName>
+      </EachAction>
+      <EachAction ActionNumber="10" Time="08:21:30" Pid="26484" ProgramId="0000a0ea77d7d96ed6ae4f7aa36cee42af470000ffff" FileId="000083d3842d579e5b6e2e5b055cca4fb90933489c28" FileVersion="148.0.2" FileDescription="Firefox" FileCompany="Mozilla Corporation" FileName="FIREFOX.EXE" CommandLine="FIREFOX.EXE">
+        <Description>Clique do usuário com o botão esquerdo do mouse em "Get Started - UniFi Design Center (documento)" em "Get Started - UniFi Design Center — Perfil original — Mozilla Firefox"</Description>
+        <Action>Clicar com o Botão Esquerdo do Mouse</Action>
+        <CursorCoordsXY>836,623</CursorCoordsXY>
+        <ScreenCoordsXYWH>0,0,1920,1080</ScreenCoordsXYWH>
+        <UIAStack>
+          <Level BoundingRectangle="50,164,1870,868" ControlType="50006" FrameworkId="Gecko" LocalizedControlType="Imagem" />
+          <Level BoundingRectangle="50,164,1870,868" ClassName="editor-container" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="50,164,1870,868" ClassName="designer css-1wq2q75" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="principal" />
+          <Level AutomationId="root" BoundingRectangle="0,85,1920,947" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="0,85,1920,947" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="0,85,1920,947" ControlType="50030" FrameworkId="Gecko" Name="Get Started - UniFi Design Center" LocalizedControlType="documento" />
+          <Level BoundingRectangle="0,85,1920,947" ControlType="50033" FrameworkId="Gecko" LocalizedControlType="painel" />
+          <Level AutomationId="panel-1-1" BoundingRectangle="0,85,1920,947" ClassName="browserSidebarContainer deck-selected" ControlType="50033" FrameworkId="Gecko" LocalizedControlType="painel de guias" />
+          <Level AutomationId="tabbrowser-tabpanels" BoundingRectangle="0,85,1920,947" ControlType="50033" FrameworkId="Gecko" LocalizedControlType="painel" />
+          <Level BoundingRectangle="0,0,1920,1032" ClassName="MozillaWindowClass" ControlType="50032" FrameworkId="Gecko" Name="Get Started - UniFi Design Center — Perfil original — Mozilla Firefox" LocalizedControlType="janela" />
+        </UIAStack>
+        <ScreenshotFileName>screenshot0010.JPEG</ScreenshotFileName>
+      </EachAction>
+      <EachAction ActionNumber="11" Time="08:21:32" Pid="26484" ProgramId="0000a0ea77d7d96ed6ae4f7aa36cee42af470000ffff" FileId="000083d3842d579e5b6e2e5b055cca4fb90933489c28" FileVersion="148.0.2" FileDescription="Firefox" FileCompany="Mozilla Corporation" FileName="FIREFOX.EXE" CommandLine="FIREFOX.EXE">
+        <Description>Entrada de teclado do usuário em "Get Started - UniFi Design Center — Perfil original — Mozilla Firefox (janela)" em "Get Started - UniFi Design Center — Perfil original — Mozilla Firefox" [Esc]</Description>
+        <Action>Entrada de Teclado</Action>
+        <CursorCoordsXY>0,0</CursorCoordsXY>
+        <ScreenCoordsXYWH>0,0,1920,1080</ScreenCoordsXYWH>
+        <UIAStack>
+          <Level BoundingRectangle="0,0,1920,1032" ClassName="MozillaWindowClass" ControlType="50032" FrameworkId="Gecko" Name="Get Started - UniFi Design Center — Perfil original — Mozilla Firefox" LocalizedControlType="janela" />
+        </UIAStack>
+        <ScreenshotFileName>screenshot0011.JPEG</ScreenshotFileName>
+      </EachAction>
+      <EachAction ActionNumber="12" Time="08:21:34" Pid="26484" ProgramId="0000a0ea77d7d96ed6ae4f7aa36cee42af470000ffff" FileId="000083d3842d579e5b6e2e5b055cca4fb90933489c28" FileVersion="148.0.2" FileDescription="Firefox" FileCompany="Mozilla Corporation" FileName="FIREFOX.EXE" CommandLine="FIREFOX.EXE">
+        <Description>Clique do usuário com o botão esquerdo do mouse em "Right Click (text)" em "Get Started - UniFi Design Center — Perfil original — Mozilla Firefox"</Description>
+        <Action>Clicar com o Botão Esquerdo do Mouse</Action>
+        <CursorCoordsXY>1262,192</CursorCoordsXY>
+        <ScreenCoordsXYWH>0,0,1920,1080</ScreenCoordsXYWH>
+        <UIAStack>
+          <Level BoundingRectangle="1207,189,68,16" ControlType="50020" FrameworkId="Gecko" Name="Right Click" LocalizedControlType="text" />
+          <Level BoundingRectangle="1207,189,68,16" ControlType="50020" FrameworkId="Gecko" LocalizedControlType="text" />
+          <Level AutomationId="snackbar-title" BoundingRectangle="998,187,531,20" ClassName="text__gebaDyU2 text-light__gebaDyU2 size-medium__gebaDyU2 color-inherit__gebaDyU2 weight-regular__gebaDyU2 withLinkStyles__gebaDyU2" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="985,180,614,34" ClassName="overlay-snackbar-default css-pvd47w" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="985,180,614,34" ClassName="css-peye8d" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="650,154,670,862" ClassName="css-z3jvqm" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="50,164,1870,868" ClassName="designer css-1wq2q75" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="principal" />
+          <Level AutomationId="root" BoundingRectangle="0,85,1920,947" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="0,85,1920,947" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="0,85,1920,947" ControlType="50030" FrameworkId="Gecko" Name="Get Started - UniFi Design Center" LocalizedControlType="documento" />
+          <Level BoundingRectangle="0,85,1920,947" ControlType="50033" FrameworkId="Gecko" LocalizedControlType="painel" />
+          <Level AutomationId="panel-1-1" BoundingRectangle="0,85,1920,947" ClassName="browserSidebarContainer deck-selected" ControlType="50033" FrameworkId="Gecko" LocalizedControlType="painel de guias" />
+          <Level AutomationId="tabbrowser-tabpanels" BoundingRectangle="0,85,1920,947" ControlType="50033" FrameworkId="Gecko" LocalizedControlType="painel" />
+          <Level BoundingRectangle="0,0,1920,1032" ClassName="MozillaWindowClass" ControlType="50032" FrameworkId="Gecko" Name="Get Started - UniFi Design Center — Perfil original — Mozilla Firefox" LocalizedControlType="janela" />
+        </UIAStack>
+        <ScreenshotFileName>screenshot0012.JPEG</ScreenshotFileName>
+      </EachAction>
+      <EachAction ActionNumber="13" Time="08:21:39" Pid="26484" ProgramId="0000a0ea77d7d96ed6ae4f7aa36cee42af470000ffff" FileId="000083d3842d579e5b6e2e5b055cca4fb90933489c28" FileVersion="148.0.2" FileDescription="Firefox" FileCompany="Mozilla Corporation" FileName="FIREFOX.EXE" CommandLine="FIREFOX.EXE">
+        <Description>Clique do usuário com o botão esquerdo do mouse em "WiFi (botão)" em "Get Started - UniFi Design Center — Perfil original — Mozilla Firefox"</Description>
+        <Action>Clicar com o Botão Esquerdo do Mouse</Action>
+        <CursorCoordsXY>905,188</CursorCoordsXY>
+        <ScreenCoordsXYWH>0,0,1920,1080</ScreenCoordsXYWH>
+        <UIAStack>
+          <Level BoundingRectangle="892,187,26,20" ClassName="text__gebaDyU2 text-light__gebaDyU2 size-medium__gebaDyU2 color-inherit__gebaDyU2 weight-regular__gebaDyU2 withLinkStyles__gebaDyU2" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="849,185,88,24" ClassName="css-109dycu" ControlType="50000" FrameworkId="Gecko" Name="WiFi" LocalizedControlType="botão" />
+          <Level BoundingRectangle="418,180,1134,46" ClassName="css-1dpbffe" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="418,154,1134,862" ClassName="css-z3jvqm" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="50,164,1870,868" ClassName="designer css-1wq2q75" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="principal" />
+          <Level AutomationId="root" BoundingRectangle="0,85,1920,947" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="0,85,1920,947" ControlType="50026" FrameworkId="Gecko" LocalizedControlType="grupo" />
+          <Level BoundingRectangle="0,85,1920,947" ControlType="50030" FrameworkId="Gecko" Name="Get Started - UniFi Design Center" LocalizedControlType="documento" />
+          <Level BoundingRectangle="0,85,1920,947" ControlType="50033" FrameworkId="Gecko" LocalizedControlType="painel" />
+          <Level AutomationId="panel-1-1" BoundingRectangle="0,85,1920,947" ClassName="browserSidebarContainer deck-selected" ControlType="50033" FrameworkId="Gecko" LocalizedControlType="painel de guias" />
+          <Level AutomationId="tabbrowser-tabpanels" BoundingRectangle="0,85,1920,947" ControlType="50033" FrameworkId="Gecko" LocalizedControlType="painel" />
+          <Level BoundingRectangle="0,0,1920,1032" ClassName="MozillaWindowClass" ControlType="50032" FrameworkId="Gecko" Name="Get Started - UniFi Design Center — Perfil original — Mozilla Firefox" LocalizedControlType="janela" />
+        </UIAStack>
+        <ScreenshotFileName>screenshot0013.JPEG</ScreenshotFileName>
+      </EachAction>
+    </RecordSession>
+  </UserActionData>
+</Report>
+</script>
+</xml>
+<div id="ReportTop" tabindex="0">
+    <h1 id="m2" title="Etapas Gravadas">Etapas Gravadas</h1>
+    <hr aria-hidden="true" />
+    <p id="m3">
+        Este arquivo contém todas as etapas e informações registradas em
+        ajude você a descrever as etapas gravadas para outras pessoas.
+    </p>
+    <p id="m4">
+        Antes de compartilhar este arquivo, você deve verificar o seguinte:
+    </p>
+    <ul>
+        <li id="m5">
+            As etapas abaixo descrevem com precisão a gravação.
+        </li>
+        <li id="m6">
+            Não há informações abaixo ou em qualquer captura de tela que você fizer
+            não deseja que outras pessoas vejam.
+        </li>
+    </ul>
+    <p id="m7">
+        As senhas ou qualquer outro texto digitado não foram gravadas, exceto para a função
+        e teclas de atalho que você usou.
+    </p>    
+    
+    <p id="m8">
+        Você pode fazer o seguinte:
+    </p>
+    <ul>
+        <li id="m9" title="Examinar as etapas registradas">
+            <a href="#Steps">Examinar as etapas registradas</a>
+        </li>
+        
+        <li id="m10" title="Revisar as etapas gravadas como uma apresentação de slides">
+            <a href="slide0001.htm">Examinar as etapas gravadas como uma apresentação de slides</a>
+        </li>
+        
+        <li id="m11" title="Examinar os detalhes adicionais">
+            <a href="#AdditionalDetails">Examinar os detalhes adicionais</a>
+        </li>
+    </ul>
+    <hr aria-hidden="true" />
+</div>
+ 
+<div id="Steps" tabindex="0">
+    <h1 id="m12" title="Etapas">Etapas</h1>
+    <hr aria-hidden="true" />
+
+    
+    <div id="Step1" title="Step1 ‎19/‎03/‎2026 08:20:51 Início da operação do usuário de arrastar com o ponteiro do mouse em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox (janela)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot;" tabindex="0">
+        <p class="align-right">
+            
+            <a title="Avançar" href="#Step2">Avançar</a>
+        </p>
+
+        <p id="m13"><b>Etapa 1: (‎19/‎03/‎2026 08:20:51)</b> Início da operação do usuário de arrastar com o ponteiro do mouse em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox (janela)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot;</p>
+        <!--AddCommentButton-->
+        <!--CommentInputEntityItem-->
+        <!--CommentText-->
+        <!--UpdateCommentButton-->
+
+        <a onclick="zoomToggle(1)"><img id="ss-1" class="screenshot-thumb" alt="Captura de tela da etapa 1." title="Clique para ampliar/reduzir a captura de tela." src="screenshot0001.JPEG"><span class="accessible-text">Captura de tela da etapa 1.</span></a>
+        <hr aria-hidden="true" />
+    </div>
+    
+    <div id="Step2" title="Step2 ‎19/‎03/‎2026 08:20:54 Fim da operação do usuário de arrastar com o ponteiro do mouse em &quot;Get Started - UniFi Design Center (documento)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot;" tabindex="0">
+        <p class="align-right">
+            <a title="Anterior" href="#Step1">Anterior</a>
+            <a title="Avançar" href="#Step3">Avançar</a>
+        </p>
+
+        <p id="m13"><b>Etapa 2: (‎19/‎03/‎2026 08:20:54)</b> Fim da operação do usuário de arrastar com o ponteiro do mouse em &quot;Get Started - UniFi Design Center (documento)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot;</p>
+        <!--AddCommentButton-->
+        <!--CommentInputEntityItem-->
+        <!--CommentText-->
+        <!--UpdateCommentButton-->
+
+        <a onclick="zoomToggle(2)"><img id="ss-2" class="screenshot-thumb" alt="Captura de tela da etapa 2." title="Clique para ampliar/reduzir a captura de tela." src="screenshot0002.JPEG"><span class="accessible-text">Captura de tela da etapa 2.</span></a>
+        <hr aria-hidden="true" />
+    </div>
+    
+    <div id="Step3" title="Step3 ‎19/‎03/‎2026 08:20:55 Início da operação do usuário de arrastar com o ponteiro do mouse em &quot;Get Started - UniFi Design Center (documento)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot;" tabindex="0">
+        <p class="align-right">
+            <a title="Anterior" href="#Step2">Anterior</a>
+            <a title="Avançar" href="#Step4">Avançar</a>
+        </p>
+
+        <p id="m13"><b>Etapa 3: (‎19/‎03/‎2026 08:20:55)</b> Início da operação do usuário de arrastar com o ponteiro do mouse em &quot;Get Started - UniFi Design Center (documento)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot;</p>
+        <!--AddCommentButton-->
+        <!--CommentInputEntityItem-->
+        <!--CommentText-->
+        <!--UpdateCommentButton-->
+
+        <a onclick="zoomToggle(3)"><img id="ss-3" class="screenshot-thumb" alt="Captura de tela da etapa 3." title="Clique para ampliar/reduzir a captura de tela." src="screenshot0003.JPEG"><span class="accessible-text">Captura de tela da etapa 3.</span></a>
+        <hr aria-hidden="true" />
+    </div>
+    
+    <div id="Step4" title="Step4 ‎19/‎03/‎2026 08:21:05 Fim da operação do usuário de arrastar com o ponteiro do mouse em &quot;Get Started - UniFi Design Center (documento)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot;" tabindex="0">
+        <p class="align-right">
+            <a title="Anterior" href="#Step3">Anterior</a>
+            <a title="Avançar" href="#Step5">Avançar</a>
+        </p>
+
+        <p id="m13"><b>Etapa 4: (‎19/‎03/‎2026 08:21:05)</b> Fim da operação do usuário de arrastar com o ponteiro do mouse em &quot;Get Started - UniFi Design Center (documento)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot;</p>
+        <!--AddCommentButton-->
+        <!--CommentInputEntityItem-->
+        <!--CommentText-->
+        <!--UpdateCommentButton-->
+
+        <a onclick="zoomToggle(4)"><img id="ss-4" class="screenshot-thumb" alt="Captura de tela da etapa 4." title="Clique para ampliar/reduzir a captura de tela." src="screenshot0004.JPEG"><span class="accessible-text">Captura de tela da etapa 4.</span></a>
+        <hr aria-hidden="true" />
+    </div>
+    
+    <div id="Step5" title="Step5 ‎19/‎03/‎2026 08:21:07 Clique do usuário com o botão esquerdo do mouse em &quot;WiFi (botão)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot;" tabindex="0">
+        <p class="align-right">
+            <a title="Anterior" href="#Step4">Anterior</a>
+            <a title="Avançar" href="#Step6">Avançar</a>
+        </p>
+
+        <p id="m13"><b>Etapa 5: (‎19/‎03/‎2026 08:21:07)</b> Clique do usuário com o botão esquerdo do mouse em &quot;WiFi (botão)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot;</p>
+        <!--AddCommentButton-->
+        <!--CommentInputEntityItem-->
+        <!--CommentText-->
+        <!--UpdateCommentButton-->
+
+        <a onclick="zoomToggle(5)"><img id="ss-5" class="screenshot-thumb" alt="Captura de tela da etapa 5." title="Clique para ampliar/reduzir a captura de tela." src="screenshot0005.JPEG"><span class="accessible-text">Captura de tela da etapa 5.</span></a>
+        <hr aria-hidden="true" />
+    </div>
+    
+    <div id="Step6" title="Step6 ‎19/‎03/‎2026 08:21:11 Clique do usuário com o botão esquerdo do mouse em &quot;Off (botão)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot;" tabindex="0">
+        <p class="align-right">
+            <a title="Anterior" href="#Step5">Anterior</a>
+            <a title="Avançar" href="#Step7">Avançar</a>
+        </p>
+
+        <p id="m13"><b>Etapa 6: (‎19/‎03/‎2026 08:21:11)</b> Clique do usuário com o botão esquerdo do mouse em &quot;Off (botão)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot;</p>
+        <!--AddCommentButton-->
+        <!--CommentInputEntityItem-->
+        <!--CommentText-->
+        <!--UpdateCommentButton-->
+
+        <a onclick="zoomToggle(6)"><img id="ss-6" class="screenshot-thumb" alt="Captura de tela da etapa 6." title="Clique para ampliar/reduzir a captura de tela." src="screenshot0006.JPEG"><span class="accessible-text">Captura de tela da etapa 6.</span></a>
+        <hr aria-hidden="true" />
+    </div>
+    
+    <div id="Step7" title="Step7 ‎19/‎03/‎2026 08:21:12 Clique do usuário com o botão esquerdo do mouse em &quot;Get Started - UniFi Design Center (documento)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot;" tabindex="0">
+        <p class="align-right">
+            <a title="Anterior" href="#Step6">Anterior</a>
+            <a title="Avançar" href="#Step8">Avançar</a>
+        </p>
+
+        <p id="m13"><b>Etapa 7: (‎19/‎03/‎2026 08:21:12)</b> Clique do usuário com o botão esquerdo do mouse em &quot;Get Started - UniFi Design Center (documento)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot;</p>
+        <!--AddCommentButton-->
+        <!--CommentInputEntityItem-->
+        <!--CommentText-->
+        <!--UpdateCommentButton-->
+
+        <a onclick="zoomToggle(7)"><img id="ss-7" class="screenshot-thumb" alt="Captura de tela da etapa 7." title="Clique para ampliar/reduzir a captura de tela." src="screenshot0007.JPEG"><span class="accessible-text">Captura de tela da etapa 7.</span></a>
+        <hr aria-hidden="true" />
+    </div>
+    
+    <div id="Step8" title="Step8 ‎19/‎03/‎2026 08:21:24 Clique do usuário com o botão esquerdo do mouse em &quot;Brick 5 dB (item de lista)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot;" tabindex="0">
+        <p class="align-right">
+            <a title="Anterior" href="#Step7">Anterior</a>
+            <a title="Avançar" href="#Step9">Avançar</a>
+        </p>
+
+        <p id="m13"><b>Etapa 8: (‎19/‎03/‎2026 08:21:24)</b> Clique do usuário com o botão esquerdo do mouse em &quot;Brick 5 dB (item de lista)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot;</p>
+        <!--AddCommentButton-->
+        <!--CommentInputEntityItem-->
+        <!--CommentText-->
+        <!--UpdateCommentButton-->
+
+        <a onclick="zoomToggle(8)"><img id="ss-8" class="screenshot-thumb" alt="Captura de tela da etapa 8." title="Clique para ampliar/reduzir a captura de tela." src="screenshot0008.JPEG"><span class="accessible-text">Captura de tela da etapa 8.</span></a>
+        <hr aria-hidden="true" />
+    </div>
+    
+    <div id="Step9" title="Step9 ‎19/‎03/‎2026 08:21:28 Clique do usuário com o botão esquerdo do mouse em &quot;Get Started - UniFi Design Center (documento)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot;" tabindex="0">
+        <p class="align-right">
+            <a title="Anterior" href="#Step8">Anterior</a>
+            <a title="Avançar" href="#Step10">Avançar</a>
+        </p>
+
+        <p id="m13"><b>Etapa 9: (‎19/‎03/‎2026 08:21:28)</b> Clique do usuário com o botão esquerdo do mouse em &quot;Get Started - UniFi Design Center (documento)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot;</p>
+        <!--AddCommentButton-->
+        <!--CommentInputEntityItem-->
+        <!--CommentText-->
+        <!--UpdateCommentButton-->
+
+        <a onclick="zoomToggle(9)"><img id="ss-9" class="screenshot-thumb" alt="Captura de tela da etapa 9." title="Clique para ampliar/reduzir a captura de tela." src="screenshot0009.JPEG"><span class="accessible-text">Captura de tela da etapa 9.</span></a>
+        <hr aria-hidden="true" />
+    </div>
+    
+    <div id="Step10" title="Step10 ‎19/‎03/‎2026 08:21:30 Clique do usuário com o botão esquerdo do mouse em &quot;Get Started - UniFi Design Center (documento)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot;" tabindex="0">
+        <p class="align-right">
+            <a title="Anterior" href="#Step9">Anterior</a>
+            <a title="Avançar" href="#Step11">Avançar</a>
+        </p>
+
+        <p id="m13"><b>Etapa 10: (‎19/‎03/‎2026 08:21:30)</b> Clique do usuário com o botão esquerdo do mouse em &quot;Get Started - UniFi Design Center (documento)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot;</p>
+        <!--AddCommentButton-->
+        <!--CommentInputEntityItem-->
+        <!--CommentText-->
+        <!--UpdateCommentButton-->
+
+        <a onclick="zoomToggle(10)"><img id="ss-10" class="screenshot-thumb" alt="Captura de tela da etapa 10." title="Clique para ampliar/reduzir a captura de tela." src="screenshot0010.JPEG"><span class="accessible-text">Captura de tela da etapa 10.</span></a>
+        <hr aria-hidden="true" />
+    </div>
+    
+    <div id="Step11" title="Step11 ‎19/‎03/‎2026 08:21:32 Entrada de teclado do usuário em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox (janela)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot; [Esc]" tabindex="0">
+        <p class="align-right">
+            <a title="Anterior" href="#Step10">Anterior</a>
+            <a title="Avançar" href="#Step12">Avançar</a>
+        </p>
+
+        <p id="m13"><b>Etapa 11: (‎19/‎03/‎2026 08:21:32)</b> Entrada de teclado do usuário em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox (janela)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot; [Esc]</p>
+        <!--AddCommentButton-->
+        <!--CommentInputEntityItem-->
+        <!--CommentText-->
+        <!--UpdateCommentButton-->
+
+        <a onclick="zoomToggle(11)"><img id="ss-11" class="screenshot-thumb" alt="Captura de tela da etapa 11." title="Clique para ampliar/reduzir a captura de tela." src="screenshot0011.JPEG"><span class="accessible-text">Captura de tela da etapa 11.</span></a>
+        <hr aria-hidden="true" />
+    </div>
+    
+    <div id="Step12" title="Step12 ‎19/‎03/‎2026 08:21:34 Clique do usuário com o botão esquerdo do mouse em &quot;Right Click (text)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot;" tabindex="0">
+        <p class="align-right">
+            <a title="Anterior" href="#Step11">Anterior</a>
+            <a title="Avançar" href="#Step13">Avançar</a>
+        </p>
+
+        <p id="m13"><b>Etapa 12: (‎19/‎03/‎2026 08:21:34)</b> Clique do usuário com o botão esquerdo do mouse em &quot;Right Click (text)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot;</p>
+        <!--AddCommentButton-->
+        <!--CommentInputEntityItem-->
+        <!--CommentText-->
+        <!--UpdateCommentButton-->
+
+        <a onclick="zoomToggle(12)"><img id="ss-12" class="screenshot-thumb" alt="Captura de tela da etapa 12." title="Clique para ampliar/reduzir a captura de tela." src="screenshot0012.JPEG"><span class="accessible-text">Captura de tela da etapa 12.</span></a>
+        <hr aria-hidden="true" />
+    </div>
+    
+    <div id="Step13" title="Step13 ‎19/‎03/‎2026 08:21:39 Clique do usuário com o botão esquerdo do mouse em &quot;WiFi (botão)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot;" tabindex="0">
+        <p class="align-right">
+            <a title="Anterior" href="#Step12">Anterior</a>
+            
+        </p>
+
+        <p id="m13"><b>Etapa 13: (‎19/‎03/‎2026 08:21:39)</b> Clique do usuário com o botão esquerdo do mouse em &quot;WiFi (botão)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot;</p>
+        <!--AddCommentButton-->
+        <!--CommentInputEntityItem-->
+        <!--CommentText-->
+        <!--UpdateCommentButton-->
+
+        <a onclick="zoomToggle(13)"><img id="ss-13" class="screenshot-thumb" alt="Captura de tela da etapa 13." title="Clique para ampliar/reduzir a captura de tela." src="screenshot0013.JPEG"><span class="accessible-text">Captura de tela da etapa 13.</span></a>
+        <hr aria-hidden="true" />
+    </div>
+    
+</div>
+
+<div id="AdditionalDetails" tabindex="0">
+    <h1 title="Detalhes Adicionais" id="m14">Detalhes Adicionais</h1>
+    <p id="m15">
+        A seção a seguir contém os detalhes adicionais que foram
+        Gravado.
+    </p>
+    <p id="m16">
+        Esses detalhes ajudam a identificar com precisão os programas e a interface do usuário que você
+        usado nesta gravação.
+    </p>
+    <p id="m17">
+        Esta seção pode conter texto interno para programas que
+        somente usuários ou programadores muito avançados podem entender.
+    </p>
+    <p id="m18">
+        Examine esses detalhes para garantir que eles não contenham
+        qualquer informação que você não deseja que outras pessoas vejam.
+    </p>
+
+    <br />
+    <p style="font-family:verdana">
+            Sessão de Gravação: ‎19/‎03/‎2026 08:20:49 - 08:21:42<br /><br />Passos Gravados: 13, Passos Ausentes: 0, Outros Erros: 0<br /><br />Sistema Operacional: 26100.1.amd64fre.ge_release.240331-1435 10.0.0.0.2.48<br /><br />Passo 1: Início da operação do usuário de arrastar com o ponteiro do mouse em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox (janela)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot;<br />Programa: Firefox, 148.0.2, Mozilla Corporation, FIREFOX.EXE, FIREFOX.EXE<br />Elementos de Interface do Usuário: Get Started - UniFi Design Center — Perfil original — Mozilla Firefox, MozillaWindowClass<br /><br />Passo 2: Fim da operação do usuário de arrastar com o ponteiro do mouse em &quot;Get Started - UniFi Design Center (documento)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot;<br />Programa: Firefox, 148.0.2, Mozilla Corporation, FIREFOX.EXE, FIREFOX.EXE<br />Elementos de Interface do Usuário: Get Started - UniFi Design Center, browserSidebarContainer deck-selected, Get Started - UniFi Design Center — Perfil original — Mozilla Firefox, MozillaWindowClass<br /><br />Passo 3: Início da operação do usuário de arrastar com o ponteiro do mouse em &quot;Get Started - UniFi Design Center (documento)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot;<br />Programa: Firefox, 148.0.2, Mozilla Corporation, FIREFOX.EXE, FIREFOX.EXE<br />Elementos de Interface do Usuário: editor-container, designer css-1wq2q75, Get Started - UniFi Design Center, browserSidebarContainer deck-selected, Get Started - UniFi Design Center — Perfil original — Mozilla Firefox, MozillaWindowClass<br /><br />Passo 4: Fim da operação do usuário de arrastar com o ponteiro do mouse em &quot;Get Started - UniFi Design Center (documento)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot;<br />Programa: Firefox, 148.0.2, Mozilla Corporation, FIREFOX.EXE, FIREFOX.EXE<br />Elementos de Interface do Usuário: editor-container, designer css-1wq2q75, Get Started - UniFi Design Center, browserSidebarContainer deck-selected, Get Started - UniFi Design Center — Perfil original — Mozilla Firefox, MozillaWindowClass<br /><br />Passo 5: Clique do usuário com o botão esquerdo do mouse em &quot;WiFi (botão)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot;<br />Programa: Firefox, 148.0.2, Mozilla Corporation, FIREFOX.EXE, FIREFOX.EXE<br />Elementos de Interface do Usuário: WiFi, css-109dycu, css-1dpbffe, css-z3jvqm, designer css-1wq2q75, Get Started - UniFi Design Center, browserSidebarContainer deck-selected, Get Started - UniFi Design Center — Perfil original — Mozilla Firefox, MozillaWindowClass<br /><br />Passo 6: Clique do usuário com o botão esquerdo do mouse em &quot;Off (botão)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot;<br />Programa: Firefox, 148.0.2, Mozilla Corporation, FIREFOX.EXE, FIREFOX.EXE<br />Elementos de Interface do Usuário: text__gebaDyU2 text-light__gebaDyU2 size-medium__gebaDyU2 color-inherit__gebaDyU2 weight-regular__gebaDyU2 withLinkStyles__gebaDyU2, Off, css-109dycu, css-1dpbffe, css-z3jvqm, designer css-1wq2q75, Get Started - UniFi Design Center, browserSidebarContainer deck-selected, Get Started - UniFi Design Center — Perfil original — Mozilla Firefox, MozillaWindowClass<br /><br />Passo 7: Clique do usuário com o botão esquerdo do mouse em &quot;Get Started - UniFi Design Center (documento)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot;<br />Programa: Firefox, 148.0.2, Mozilla Corporation, FIREFOX.EXE, FIREFOX.EXE<br />Elementos de Interface do Usuário: Icon-module_icon__2a0I8 Icon-module_icon-light__27kpC Icon-module_icon-outline__3nv5v, hoverable__9xW8x41Z cursor-pointer__9xW8x41Z css-109dycu, css-1fws3x0 tooltip-container__vRGVdKCu container__9xW8x41Z hoverable__9xW8x41Z cursor-default__9xW8x41Z, css-3jt5te, css-dgn0aw, css-z3jvqm, designer css-1wq2q75, Get Started - UniFi Design Center, browserSidebarContainer deck-selected, Get Started - UniFi Design Center — Perfil original — Mozilla Firefox, MozillaWindowClass<br /><br />Passo 8: Clique do usuário com o botão esquerdo do mouse em &quot;Brick 5 dB (item de lista)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot;<br />Programa: Firefox, 148.0.2, Mozilla Corporation, FIREFOX.EXE, FIREFOX.EXE<br />Elementos de Interface do Usuário: Brick 5 dB, css-1le895d item__dnUJZyn9 item-light__dnUJZyn9, optionList__dnUJZyn9 optionList-light__dnUJZyn9, root__dnUJZyn9 root-light__dnUJZyn9, css-lhnpgk, css-1uykddx, css-as3tpg, designer css-1wq2q75, Get Started - UniFi Design Center, browserSidebarContainer deck-selected, Get Started - UniFi Design Center — Perfil original — Mozilla Firefox, MozillaWindowClass<br /><br />Passo 9: Clique do usuário com o botão esquerdo do mouse em &quot;Get Started - UniFi Design Center (documento)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot;<br />Programa: Firefox, 148.0.2, Mozilla Corporation, FIREFOX.EXE, FIREFOX.EXE<br />Elementos de Interface do Usuário: editor-container, designer css-1wq2q75, Get Started - UniFi Design Center, browserSidebarContainer deck-selected, Get Started - UniFi Design Center — Perfil original — Mozilla Firefox, MozillaWindowClass<br /><br />Passo 10: Clique do usuário com o botão esquerdo do mouse em &quot;Get Started - UniFi Design Center (documento)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot;<br />Programa: Firefox, 148.0.2, Mozilla Corporation, FIREFOX.EXE, FIREFOX.EXE<br />Elementos de Interface do Usuário: editor-container, designer css-1wq2q75, Get Started - UniFi Design Center, browserSidebarContainer deck-selected, Get Started - UniFi Design Center — Perfil original — Mozilla Firefox, MozillaWindowClass<br /><br />Passo 11: Entrada de teclado do usuário em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox (janela)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot; [Esc]<br />Programa: Firefox, 148.0.2, Mozilla Corporation, FIREFOX.EXE, FIREFOX.EXE<br />Elementos de Interface do Usuário: Get Started - UniFi Design Center — Perfil original — Mozilla Firefox, MozillaWindowClass<br /><br />Passo 12: Clique do usuário com o botão esquerdo do mouse em &quot;Right Click (text)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot;<br />Programa: Firefox, 148.0.2, Mozilla Corporation, FIREFOX.EXE, FIREFOX.EXE<br />Elementos de Interface do Usuário: Right Click, text__gebaDyU2 text-light__gebaDyU2 size-medium__gebaDyU2 color-inherit__gebaDyU2 weight-regular__gebaDyU2 withLinkStyles__gebaDyU2, overlay-snackbar-default css-pvd47w, css-peye8d, css-z3jvqm, designer css-1wq2q75, Get Started - UniFi Design Center, browserSidebarContainer deck-selected, Get Started - UniFi Design Center — Perfil original — Mozilla Firefox, MozillaWindowClass<br /><br />Passo 13: Clique do usuário com o botão esquerdo do mouse em &quot;WiFi (botão)&quot; em &quot;Get Started - UniFi Design Center — Perfil original — Mozilla Firefox&quot;<br />Programa: Firefox, 148.0.2, Mozilla Corporation, FIREFOX.EXE, FIREFOX.EXE<br />Elementos de Interface do Usuário: text__gebaDyU2 text-light__gebaDyU2 size-medium__gebaDyU2 color-inherit__gebaDyU2 weight-regular__gebaDyU2 withLinkStyles__gebaDyU2, WiFi, css-109dycu, css-1dpbffe, css-z3jvqm, designer css-1wq2q75, Get Started - UniFi Design Center, browserSidebarContainer deck-selected, Get Started - UniFi Design Center — Perfil original — Mozilla Firefox, MozillaWindowClass<br /><br />
+    </p>
+    <hr id="m19" aria-hidden="true" />
+    <a href="#ReportTop" title="Return to top of page"> Voltar ao topo da página... </a>
+</div>
+<div style="height:500px;">&nbsp;</div>
+</body>
+</html>
+

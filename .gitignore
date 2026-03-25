@@ -1,0 +1,13 @@
+node_modules/
+dist/
+release/
+.env
+.env.local
+.env.*
+!.env.example
+client/.env
+client/.env.local
+client/.env.*
+!client/.env.example
+extracted-plans/
+*.log
