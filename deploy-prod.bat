@@ -24,12 +24,12 @@ if errorlevel 1 (
   exit /b 1
 )
 
-for /f %%i in ('powershell -NoProfile -Command "(Get-Date).ToString(\"yyyy-MM-dd HH:mm:ss\")"') do set "DEPLOY_STAMP=%%i"
+for /f "delims=" %%i in ('powershell -NoProfile -Command "(Get-Date).ToString(\"yyyy-MM-dd HH:mm:ss\")"') do set "DEPLOY_STAMP=%%i"
 set "COMMIT_MSG=chore: deploy %DEPLOY_STAMP%"
 echo [4/5] Commit...
 git commit -m "%COMMIT_MSG%"
 if errorlevel 1 (
-  echo Nenhuma alteracao nova para commit (ou falha no commit).
+  echo Nenhuma alteracao nova para commit ou falha no commit.
 )
 
 echo [5/5] Push main...
