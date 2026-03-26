@@ -1,5 +1,5 @@
 @echo off
-setlocal
+setlocal EnableExtensions
 
 cd /d "%~dp0"
 
@@ -24,7 +24,8 @@ if errorlevel 1 (
   exit /b 1
 )
 
-set "COMMIT_MSG=chore: deploy %date% %time%"
+for /f %%i in ('powershell -NoProfile -Command "(Get-Date).ToString(\"yyyy-MM-dd HH:mm:ss\")"') do set "DEPLOY_STAMP=%%i"
+set "COMMIT_MSG=chore: deploy %DEPLOY_STAMP%"
 echo [4/5] Commit...
 git commit -m "%COMMIT_MSG%"
 if errorlevel 1 (
