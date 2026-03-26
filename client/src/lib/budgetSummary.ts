@@ -1,6 +1,6 @@
 ﻿import { getSavedModuleBoard } from './planState';
 import { getAmpModel } from './audio/ampSelector';
-import { getSpeakerModelOptionForSpeaker } from './audio/speakerModels';
+import { getSpeakerModelOptionForSpeaker, getSubwooferModelBySize } from './audio/speakerModels';
 import type {
   CameraProfile,
   CommercialBudgetLine,
@@ -169,23 +169,41 @@ function buildAudioSections(selectedPlans: EditablePlan[], priceCatalog: PriceCa
       const counts = new Map<string, number>();
 
       systemSpeakers.forEach((speaker) => {
-        const label =
+        const model =
           speaker.type === 'subwoofer'
-            ? `Subwoofer ${speaker.sizeInches}\"`
-            : getSpeakerModelOptionForSpeaker(speaker)?.label ?? `${speaker.sizeInches}\" ${speaker.type}`;
-        counts.set(label, (counts.get(label) ?? 0) + 1);
+            ? getSubwooferModelBySize(speaker.sizeInches)
+            : getSpeakerModelOptionForSpeaker(speaker) ?? null;
+        const label = model?.label ?? `${speaker.sizeInches}\" ${speaker.type}`;
+        const key = `${label}|${model?.sku ?? ''}`;
+        counts.set(key, (counts.get(key) ?? 0) + 1);
       });
 
-      const ampLabel = getAmpModel(system.ampType)?.label ?? system.ampType;
+      const ampModel = getAmpModel(system.ampType);
+      const ampLabel = ampModel?.label ?? system.ampType;
 
       return {
         id: `audio-${plan.pageNum}-${system.id}`,
         title: `Sistema de som ${index + 1}${system.nome ? ` - ${system.nome}` : ''}`,
         lines: [
-          pricedLine(ampLabel, 1, 'un', priceCatalog, [ampLabel, 'amplificador', 'receiver', 'zona', 'audio']),
-          ...Array.from(counts.entries()).map(([label, quantity]) =>
-            pricedLine(label, quantity, 'un', priceCatalog, [label, 'caixa de teto', 'caixa outdoor', 'subwoofer', 'audio']),
+          pricedLine(
+            ampLabel,
+            1,
+            'un',
+            priceCatalog,
+            [ampLabel, 'amplificador', 'receiver', 'zona', 'audio'],
+            ampModel?.sku ?? undefined,
           ),
+          ...Array.from(counts.entries()).map(([entry, quantity]) => {
+            const [label, preferredSku] = entry.split('|');
+            return pricedLine(
+              label,
+              quantity,
+              'un',
+              priceCatalog,
+              [label, 'caixa de teto', 'caixa outdoor', 'subwoofer', 'audio'],
+              preferredSku || undefined,
+            );
+          }),
         ],
       };
     }),

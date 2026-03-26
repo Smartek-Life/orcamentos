@@ -3,6 +3,7 @@ import type { AmpType, AudioSystem, AudioZone } from '../../types';
 export interface AmpModelOption {
   id: AmpType;
   label: string;
+  sku: string | null;
   zones: number;
   inputs: number;
   category: 'ceiling' | 'analog' | 'digital' | 'receiver';
@@ -17,15 +18,15 @@ export interface AmpRecommendation {
 }
 
 export const AMP_MODEL_OPTIONS: AmpModelOption[] = [
-  { id: 'ceiling_amp_1_zone', label: 'Amplificador uma zona de teto', zones: 1, inputs: 1, category: 'ceiling', requiresSubwoofer: false },
-  { id: 'analog_1_zone', label: 'Amplificador uma zona analogico', zones: 1, inputs: 1, category: 'analog', requiresSubwoofer: false },
-  { id: 'analog_2_zones', label: 'Amplificador duas zonas analogico', zones: 2, inputs: 2, category: 'analog', requiresSubwoofer: false },
-  { id: 'analog_4_zones', label: 'Amplificador 4 zonas analogico', zones: 4, inputs: 4, category: 'analog', requiresSubwoofer: false },
-  { id: 'digital_2_zones', label: 'Amp 2 zonas digital', zones: 2, inputs: 2, category: 'digital', requiresSubwoofer: false },
-  { id: 'digital_4_zones', label: 'Amp 4 zonas digital', zones: 4, inputs: 4, category: 'digital', requiresSubwoofer: false },
-  { id: 'digital_6_zones', label: 'Amp 6 zonas digital', zones: 6, inputs: 6, category: 'digital', requiresSubwoofer: false },
-  { id: 'receiver_5_1', label: 'Receiver 5.1 - 1 zona', zones: 1, inputs: 4, category: 'receiver', requiresSubwoofer: true, note: 'Subwoofer obrigatorio.' },
-  { id: 'receiver_7_1', label: 'Receiver 7.1 - duas zonas', zones: 2, inputs: 5, category: 'receiver', requiresSubwoofer: true, note: 'Subwoofer obrigatorio na zona principal.' },
+  { id: 'ceiling_amp_1_zone', label: 'BTA1', sku: 'BTA1', zones: 1, inputs: 1, category: 'ceiling', requiresSubwoofer: false },
+  { id: 'analog_1_zone', label: 'PMR3', sku: 'PMR3', zones: 1, inputs: 1, category: 'analog', requiresSubwoofer: false },
+  { id: 'analog_2_zones', label: 'PMR2', sku: 'PMR2', zones: 2, inputs: 2, category: 'analog', requiresSubwoofer: false },
+  { id: 'analog_4_zones', label: 'PMR1', sku: 'PMR1', zones: 4, inputs: 4, category: 'analog', requiresSubwoofer: false },
+  { id: 'digital_2_zones', label: 'PMR8', sku: 'PMR8', zones: 2, inputs: 2, category: 'digital', requiresSubwoofer: false },
+  { id: 'digital_4_zones', label: 'PMR4', sku: 'PMR4', zones: 4, inputs: 4, category: 'digital', requiresSubwoofer: false },
+  { id: 'digital_6_zones', label: 'PM5', sku: 'PM5', zones: 6, inputs: 6, category: 'digital', requiresSubwoofer: false },
+  { id: 'receiver_5_1', label: 'MA510', sku: 'MA510', zones: 1, inputs: 4, category: 'receiver', requiresSubwoofer: true, note: 'Subwoofer obrigatorio.' },
+  { id: 'receiver_7_1', label: 'MA7100', sku: 'MA7100', zones: 2, inputs: 5, category: 'receiver', requiresSubwoofer: true, note: 'Subwoofer obrigatorio na zona principal.' },
 ];
 
 export function getAmpModel(id: AmpType) {
@@ -48,7 +49,7 @@ export function selectAmplifier(zones: AudioZone[]): AmpRecommendation {
   if (zoneCount === 1 && totalSpeakers <= 2 && subwooferZones === 0) {
     return {
       ampType: 'analog_1_zone',
-      label: 'Amplificador uma zona analogico',
+      label: 'PMR3',
       reason: 'Projeto pequeno com uma unica zona e sem subwoofer dedicado.',
     };
   }
@@ -56,7 +57,7 @@ export function selectAmplifier(zones: AudioZone[]): AmpRecommendation {
   if (zoneCount === 1 && subwooferZones > 0) {
     return {
       ampType: 'receiver_5_1',
-      label: 'Receiver 5.1 - 1 zona',
+      label: 'MA510',
       reason: 'Existe subwoofer na zona principal, entao o receiver 5.1 vira a leitura mais coerente.',
     };
   }
@@ -64,7 +65,7 @@ export function selectAmplifier(zones: AudioZone[]): AmpRecommendation {
   if (zoneCount === 2 && subwooferZones > 0) {
     return {
       ampType: 'receiver_7_1',
-      label: 'Receiver 7.1 - duas zonas',
+      label: 'MA7100',
       reason: 'Duas zonas com subwoofer na principal combinam melhor com receiver 7.1.',
     };
   }
@@ -72,7 +73,7 @@ export function selectAmplifier(zones: AudioZone[]): AmpRecommendation {
   if (zoneCount === 1) {
     return {
       ampType: 'ceiling_amp_1_zone',
-      label: 'Amplificador uma zona de teto',
+      label: 'BTA1',
       reason: 'Leitura direta para uma unica zona de caixas de teto.',
     };
   }
@@ -80,7 +81,7 @@ export function selectAmplifier(zones: AudioZone[]): AmpRecommendation {
   if (zoneCount === 2) {
     return {
       ampType: 'digital_2_zones',
-      label: 'Amp 2 zonas digital',
+      label: 'PMR8',
       reason: 'Duas zonas independentes pedem controle mais confortavel por aplicativo.',
     };
   }
@@ -88,14 +89,14 @@ export function selectAmplifier(zones: AudioZone[]): AmpRecommendation {
   if (zoneCount <= 4) {
     return {
       ampType: 'digital_4_zones',
-      label: 'Amp 4 zonas digital',
+      label: 'PMR4',
       reason: 'A quantidade de zonas pede distribuicao multiroom organizada.',
     };
   }
 
   return {
     ampType: 'digital_6_zones',
-    label: 'Amp 6 zonas digital',
+    label: 'PM5',
     reason: 'Projeto multiroom mais amplo, com varias zonas independentes.',
   };
 }

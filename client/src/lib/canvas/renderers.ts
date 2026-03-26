@@ -33,7 +33,7 @@ export function drawOverlay(
     drawDetectedArea(context, canvasWidth, canvasHeight, perimeterPoints, perimeterClosed);
   }
   if (!isDragging) {
-    drawHeatmap(context, canvasWidth, canvasHeight, analysis, plan, detectedWalls, coverageRadii);
+    drawHeatmap(context, canvasWidth, canvasHeight, plan.accessPoints, plan, detectedWalls, coverageRadii);
   }
   drawDetectedWalls(context, canvasWidth, canvasHeight, detectedWalls);
   drawPerimeter(context, canvasWidth, canvasHeight, perimeterPoints, perimeterClosed);
@@ -67,7 +67,7 @@ function drawHeatmap(
   context: CanvasRenderingContext2D,
   canvasWidth: number,
   canvasHeight: number,
-  analysis: FloorAnalysis,
+  accessPoints: FloorAnalysis['access_points'],
   plan: EditablePlan,
   detectedWalls: AutoWallLine[],
   coverageRadii: CoverageRadii,
@@ -85,7 +85,7 @@ function drawHeatmap(
       };
       const strength = getCombinedSignalStrength(
         point,
-        analysis.access_points,
+        accessPoints,
         plan,
         detectedWalls,
         canvasWidth,

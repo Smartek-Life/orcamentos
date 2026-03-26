@@ -6,43 +6,49 @@ export interface SpeakerModelOption {
   type: Exclude<SpeakerType, 'subwoofer'>;
   sizeInches: number;
   shortLabel: string;
+  sku: string;
 }
 
 export const SPEAKER_MODEL_OPTIONS: SpeakerModelOption[] = [
   {
     id: 'ceiling_national_6',
-    label: '6 polegadas nacional',
+    label: 'CI6R',
     type: 'ceiling_national',
     sizeInches: 6,
-    shortLabel: '6" nac',
+    shortLabel: 'CI6R',
+    sku: 'CI6R',
   },
   {
     id: 'ceiling_national_8',
-    label: '8 polegadas nacional',
+    label: 'CI8R',
     type: 'ceiling_national',
     sizeInches: 8,
-    shortLabel: '8" nac',
+    shortLabel: 'CI8R',
+    sku: 'CI8R',
   },
   {
     id: 'ceiling_imported_6',
-    label: '6 polegadas importada',
+    label: 'JBL 260W',
     type: 'ceiling_imported',
     sizeInches: 6,
-    shortLabel: '6" imp',
+    shortLabel: 'JBL260',
+    sku: 'JBL 260W',
   },
   {
     id: 'ceiling_imported_8',
-    label: '8 polegadas importada',
+    label: 'JBL 280W',
     type: 'ceiling_imported',
     sizeInches: 8,
-    shortLabel: '8" imp',
+    shortLabel: 'JBL280',
+    sku: 'JBL 280W',
   },
   {
     id: 'outdoor',
-    label: 'Caixa outdoor',
+    label: 'OS120',
     type: 'outdoor',
     sizeInches: 6,
-    shortLabel: 'outdoor',
+    shortLabel: 'OS120',
+    sku: 'OS120',
   },
 ];
 
@@ -66,4 +72,14 @@ export function getSpeakerDisplayLabel(speaker: Pick<SpeakerDevice, 'type' | 'si
   }
 
   return getSpeakerModelOptionForSpeaker(speaker)?.shortLabel ?? `${speaker.sizeInches}"`;
+}
+
+export function getSubwooferModelBySize(sizeInches: number) {
+  if (sizeInches >= 12) {
+    return { label: 'A220P', sku: 'A220P', shortLabel: 'A220P' };
+  }
+  if (sizeInches >= 10) {
+    return { label: 'A200P', sku: 'A200P', shortLabel: 'A200P' };
+  }
+  return { label: 'CI8P', sku: 'CI8P', shortLabel: 'CI8P' };
 }
