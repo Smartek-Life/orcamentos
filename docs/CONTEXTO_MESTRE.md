@@ -168,3 +168,42 @@ Antes de qualquer mudanca grande:
 3. Rodar `typecheck + build`.
 4. Validar fluxo principal com teste manual rapido.
 
+## 14) Boas praticas de Git e Deploy continuo
+
+Objetivo: manter evolucao constante com deploy frequente e risco baixo.
+
+### Fluxo padrao de trabalho
+
+1. Desenvolver no codigo local.
+2. Antes de enviar:
+   - rodar `npm run typecheck`
+   - rodar `npm run build`
+3. Commit pequeno e objetivo.
+4. Push na branch `main`.
+5. Cloudflare Pages faz deploy automatico da `main`.
+
+### Regras praticas para evitar quebra em producao
+
+- Commits pequenos e frequentes (evitar blocos gigantes).
+- Mensagem de commit clara (o que mudou e por que).
+- Nunca versionar segredos (`.env`, chaves privadas, tokens).
+- Sempre validar ao menos um fluxo rapido antes do push:
+  - login
+  - abrir/salvar projeto
+  - exportar PDF
+- Se surgir erro em producao, corrigir e subir hotfix imediatamente na `main`.
+
+### Padrao de operacao recomendado
+
+- Repositorio oficial: `https://github.com/Smartek-Life/orcamentos`
+- Branch de producao: `main`
+- Auto deploy: habilitado no Cloudflare Pages para `main`
+- Supabase configurado com URL de producao em Auth (`Site URL` e `Redirect URLs`)
+
+### Checklist minimo antes de cada deploy
+
+1. `typecheck` sem erro.
+2. `build` sem erro.
+3. Mudanca validada no navegador local.
+4. Commit + push concluido.
+5. Confirmar deploy `Success` no Cloudflare.

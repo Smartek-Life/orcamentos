@@ -67,18 +67,18 @@ export function getCombinedSignalStrength(
 
 export function getHeatmapColor(strength: number): string {
   if (strength >= 0.76) {
-    return 'rgba(130, 197, 97, 0.2)';
+    return 'rgba(130, 197, 97, 0.42)';
   }
   if (strength >= 0.58) {
-    return 'rgba(173, 216, 99, 0.17)';
+    return 'rgba(173, 216, 99, 0.36)';
   }
   if (strength >= 0.4) {
-    return 'rgba(252, 212, 99, 0.14)';
+    return 'rgba(252, 212, 99, 0.3)';
   }
   if (strength >= 0.23) {
-    return 'rgba(246, 170, 80, 0.12)';
+    return 'rgba(246, 170, 80, 0.18)';
   }
-  return 'rgba(199, 78, 88, 0.1)';
+  return 'rgba(199, 78, 88, 0.13)';
 }
 
 export function getProcessingBounds(detectedWalls: AutoWallLine[], canvasWidth: number, canvasHeight: number) {

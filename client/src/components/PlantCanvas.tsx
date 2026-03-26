@@ -81,6 +81,7 @@ export function PlantCanvas({
   const [draftCursor, setDraftCursor] = useState<PlanPoint | null>(null);
   const [selectedWallId, setSelectedWallId] = useState<string | null>(null);
   const [draggingApId, setDraggingApId] = useState<number | null>(null);
+  const [localApPositions, setLocalApPositions] = useState<Record<number, PlanPoint>>({});
   const [draggingPerimeterPoint, setDraggingPerimeterPoint] = useState<number | null>(null);
   const [areaDraftPoints, setAreaDraftPoints] = useState<PlanPoint[]>([]);
   const [detectedWalls, setDetectedWalls] = useState<AutoWallLine[]>([]);
@@ -89,6 +90,20 @@ export function PlantCanvas({
   const [scaleInput, setScaleInput] = useState('');
   const [areaInput, setAreaInput] = useState('');
   const imageUrl = useMemo(() => base64ToDataUrl(pageImageBase64), [pageImageBase64]);
+  const isDragging = draggingApId !== null;
+
+  const effectivePlan = useMemo<EditablePlan>(() => {
+    if (!isDragging || Object.keys(localApPositions).length === 0) {
+      return plan;
+    }
+
+    return {
+      ...plan,
+      accessPoints: plan.accessPoints.map((ap) =>
+        localApPositions[ap.id] ? { ...ap, ...localApPositions[ap.id] } : ap,
+      ),
+    };
+  }, [isDragging, localApPositions, plan]);
 
   useEffect(() => {
     if (plan.pendingLine) {
@@ -141,11 +156,23 @@ export function PlantCanvas({
 
       context.clearRect(0, 0, width, height);
       context.drawImage(image, 0, 0, width, height);
-      drawOverlay(context, width, height, analysis, plan, selectedWallId, detectedWalls, areaDraftPoints);
+      drawOverlay(
+        context,
+        width,
+        height,
+        analysis,
+        effectivePlan,
+        selectedWallId,
+        detectedWalls,
+        areaDraftPoints,
+        isDragging,
+      );
       if (draftStart && draftCursor) {
-        drawDraftLine(context, width, height, draftStart, draftCursor, plan.mode);
+        drawDraftLine(context, width, height, draftStart, draftCursor, effectivePlan.mode);
       }
-      onSnapshotChange?.(canvas.toDataURL('image/png'));
+      if (!isDragging) {
+        onSnapshotChange?.(canvas.toDataURL('image/png'));
+      }
     };
 
     image.src = imageUrl;
@@ -153,15 +180,27 @@ export function PlantCanvas({
     return () => {
       cancelled = true;
     };
-  }, [analysis, areaDraftPoints, detectedWalls, draftCursor, draftStart, imageUrl, onSnapshotChange, plan, selectedWallId, zoom]);
+  }, [
+    analysis,
+    areaDraftPoints,
+    detectedWalls,
+    draftCursor,
+    draftStart,
+    effectivePlan,
+    imageUrl,
+    isDragging,
+    onSnapshotChange,
+    selectedWallId,
+    zoom,
+  ]);
 
   const hotspots = useMemo<Hotspot[]>(() => {
-    return analysis.access_points.map((ap) => ({
+    return effectivePlan.accessPoints.map((ap) => ({
       ap,
       x: clamp(ap.x, 0, 1) * canvasSize.width,
       y: clamp(ap.y, 0, 1) * canvasSize.height,
     }));
-  }, [analysis.access_points, canvasSize.height, canvasSize.width]);
+  }, [canvasSize.height, canvasSize.width, effectivePlan.accessPoints]);
 
   const selectedWall = plan.walls.find((wall) => wall.id === selectedWallId) ?? null;
   const pendingPixels = plan.pendingLine
@@ -175,9 +214,12 @@ export function PlantCanvas({
   const activePerimeterPoints = plan.perimeterPoints.length >= 3 ? plan.perimeterPoints : areaDraftPoints;
 
   useEffect(() => {
-    const metrics = computeDynamicMetrics(analysis, plan, detectedWalls, canvasSize.width, canvasSize.height);
+    if (isDragging) {
+      return;
+    }
+    const metrics = computeDynamicMetrics(analysis, effectivePlan, detectedWalls, canvasSize.width, canvasSize.height);
     onMetricsChange(metrics);
-  }, [analysis, canvasSize.height, canvasSize.width, detectedWalls, onMetricsChange, plan]);
+  }, [analysis, canvasSize.height, canvasSize.width, detectedWalls, effectivePlan, isDragging, onMetricsChange]);
 
   useEffect(() => {
     if (plan.calibratedAreaM2) {
@@ -194,7 +236,10 @@ export function PlantCanvas({
   const handleMove = (event: MouseEvent<HTMLCanvasElement>) => {
     const point = getNormalizedPoint(event, canvasSize);
     if (draggingApId !== null && plan.mode === 'view') {
-      onAccessPointMove(draggingApId, point);
+      setLocalApPositions((current) => ({
+        ...current,
+        [draggingApId]: point,
+      }));
       return;
     }
     if (draggingPerimeterPoint !== null && plan.mode === 'area') {
@@ -231,12 +276,28 @@ export function PlantCanvas({
     );
 
     if (matched) {
+      setLocalApPositions((current) => ({
+        ...current,
+        [matched.ap.id]: { x: matched.ap.x, y: matched.ap.y },
+      }));
       setDraggingApId(matched.ap.id);
     }
   };
 
-  const handleMouseUp = () => {
+  const finalizeApDrag = () => {
+    if (draggingApId === null) {
+      return;
+    }
+    const finalPoint = localApPositions[draggingApId];
+    if (finalPoint) {
+      onAccessPointMove(draggingApId, finalPoint);
+    }
+    setLocalApPositions({});
     setDraggingApId(null);
+  };
+
+  const handleMouseUp = () => {
+    finalizeApDrag();
     setDraggingPerimeterPoint(null);
   };
 
@@ -407,9 +468,11 @@ export function PlantCanvas({
             onMouseMove={handleMove}
             onMouseUp={handleMouseUp}
             onMouseLeave={() => {
+              finalizeApDrag();
               setHoveredAp(null);
               setDraftCursor(null);
-              setDraggingApId(null);
+              setLocalApPositions({});
+              setDraggingPerimeterPoint(null);
             }}
             onContextMenu={(event) => {
               if (plan.mode !== 'view') {

@@ -18,6 +18,7 @@ export function drawOverlay(
   selectedWallId: string | null,
   detectedWalls: AutoWallLine[],
   areaDraftPoints: PlanPoint[],
+  isDragging = false,
 ) {
   const coverageRadii = getCoverageRadii(analysis, plan, canvasWidth, canvasHeight);
   const perimeterPoints =
@@ -31,12 +32,14 @@ export function drawOverlay(
   if (!plan.baseReady) {
     drawDetectedArea(context, canvasWidth, canvasHeight, perimeterPoints, perimeterClosed);
   }
-  drawHeatmap(context, canvasWidth, canvasHeight, analysis, plan, detectedWalls, coverageRadii);
+  if (!isDragging) {
+    drawHeatmap(context, canvasWidth, canvasHeight, analysis, plan, detectedWalls, coverageRadii);
+  }
   drawDetectedWalls(context, canvasWidth, canvasHeight, detectedWalls);
   drawPerimeter(context, canvasWidth, canvasHeight, perimeterPoints, perimeterClosed);
   drawManualWalls(context, canvasWidth, canvasHeight, plan, selectedWallId);
   drawCalibrationLine(context, canvasWidth, canvasHeight, plan);
-  drawApCoverage(context, canvasWidth, canvasHeight, analysis, coverageRadii);
+  drawApCoverage(context, canvasWidth, canvasHeight, plan.accessPoints, coverageRadii);
   drawLegend(context, analysis, plan, canvasWidth, canvasHeight);
   drawHeader(context, analysis, canvasWidth);
 }
@@ -276,10 +279,10 @@ function drawApCoverage(
   context: CanvasRenderingContext2D,
   canvasWidth: number,
   canvasHeight: number,
-  analysis: FloorAnalysis,
+  accessPoints: FloorAnalysis['access_points'],
   coverageRadii: CoverageRadii,
 ) {
-  analysis.access_points.forEach((ap) => {
+  accessPoints.forEach((ap) => {
     const centerX = clamp(ap.x, 0, 1) * canvasWidth;
     const centerY = clamp(ap.y, 0, 1) * canvasHeight;
 
